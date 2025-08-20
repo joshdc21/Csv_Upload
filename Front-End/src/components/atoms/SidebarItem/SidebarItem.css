@@ -1,0 +1,7 @@
+.sidebar-item {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  color: #000000;
+}

@@ -1,0 +1,20 @@
+.loader {
+    display: block;
+    border: 3px solid #fbf9e3;
+    border-top: 3px solid #3498db;
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader.loader-search {
+    position: absolute;
+    top: 28%;
+    right: 15px;
+}

@@ -1,0 +1,33 @@
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 300px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.drop-zone:hover {
+  border-color: #888;
+}
+
+.upload-icon {
+  font-size: 48px;
+  color: #a5a5a5;
+  margin-bottom: 10px;
+}
+
+.text-description {
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .drop-button {
+    display: none;
+  }
+
+  .drop-zone{
+    margin-right: 80px;
+  }
+}
