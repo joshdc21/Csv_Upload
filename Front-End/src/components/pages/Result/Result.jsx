@@ -47,7 +47,6 @@ const Result = ({ onReset }) => {
 
   return (
     <div className={`app ${isSidebarOpen ? 'mobile-sidebar-open' : ''}`}>
-      {/* Mobile hamburger menu */}
       <button
         className="hamburger"
         onClick={() => setIsSidebarOpen(true)}
@@ -55,23 +54,19 @@ const Result = ({ onReset }) => {
         ☰
       </button>
 
-      {/* Mobile overlay */}
       <div
         className={`mobile-overlay ${isSidebarOpen ? 'visible' : ''}`}
         onClick={() => setIsSidebarOpen(false)}
       />
 
-      {/* Sidebar */}
       <aside className="sidebar-pane">
         <Sidebar
-          onReset={onReset}
           showDashboard={true}
           isOpen={isSidebarOpen}
           setIsOpen={setIsSidebarOpen}
         />
       </aside>
 
-      {/* Content */}
       <main className="content-pane">
         <div className="download-btn-wrapper">
           <button className="download-btn" onClick={handleDownload}>

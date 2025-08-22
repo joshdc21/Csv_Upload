@@ -64,6 +64,9 @@ const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
   }, [totalRows]);
 
   const handleFileSelected = (file, parsedData) => {
+    setResults([]);
+    setIsResultReady(false);
+
     setCsvFile(file);
     onUpload(file);
     setPreview(parsedData.slice(0, 100));
@@ -147,7 +150,6 @@ const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
 
       <aside className="sidebar-pane">
         <Sidebar
-          onReset={handleReset}
           showDashboard={isResultReady}
           isOpen={isSidebarOpen}
           setIsOpen={setIsSidebarOpen}
@@ -223,6 +225,9 @@ const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
               <p><strong>Total Rows:</strong> {totalRows}</p>
               <p><strong>Total Rows (previewed):</strong> {preview.length}</p>
               <p><strong>Columns:</strong> {preview.length > 0 ? Object.keys(preview[0]).length : 0}</p>
+              <button className="process-btn" onClick={handleReset}>
+              Change File
+            </button>
             </div>
           </div>
         )}
