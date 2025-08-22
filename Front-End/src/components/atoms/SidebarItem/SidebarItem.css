@@ -4,4 +4,10 @@
   font-weight: bold;
   border-bottom: 1px solid #ddd;
   color: #000000;
+  transition: all 0.3s ease; 
+}
+
+.sidebar-item:hover {
+  background-color: #f0f0f0; 
+  color: #000;
 }
