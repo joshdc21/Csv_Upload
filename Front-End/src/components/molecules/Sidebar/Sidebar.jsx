@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SidebarItem from '../../atoms/SidebarItem/SidebarItem';
 import './sidebar.css'; 
 import { useNavigate } from 'react-router-dom';
 
-const Sidebar = ({ onReset, showDashboard, isOpen, setIsOpen }) => {
+const Sidebar = ({ showDashboard, isOpen, setIsOpen }) => {
   const navigate = useNavigate();
 
   const handleUploadClick = () => {
-    if (onReset) onReset();
     navigate('/');
     setIsOpen(false);
   };
