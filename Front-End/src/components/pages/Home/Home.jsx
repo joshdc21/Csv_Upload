@@ -5,9 +5,17 @@ import Loader from '../../atoms/Loader/Loader';
 import './Home.css';
 
 const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
-  const [csvFile, setCsvFile] = useState(null);
+  const [csvFile, setCsvFile] = useState(() => {
+    const stored = localStorage.getItem('csvFileMeta');
+    return stored ? JSON.parse(stored) : null;
+  });
+
   const [isLoading, setIsLoading] = useState(false);
-  const [totalRows, setTotalRows] = useState(0);
+
+  const [totalRows, setTotalRows] = useState(() => {
+    const stored = localStorage.getItem('totalRows');
+    return stored ? JSON.parse(stored) : 0;
+  });
 
 
   const [preview, setPreview] = useState(() => {
@@ -39,6 +47,21 @@ const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
   useEffect(() => {
     localStorage.setItem('isFileUploaded', JSON.stringify(isFileUploaded));
   }, [isFileUploaded]);
+
+  useEffect(() => {
+    if (csvFile) {
+      localStorage.setItem(
+        'csvFileMeta',
+        JSON.stringify({ name: csvFile.name, size: csvFile.size })
+      );
+    } else {
+      localStorage.removeItem('csvFileMeta');
+    }
+  }, [csvFile]);
+
+  useEffect(() => {
+    localStorage.setItem('totalRows', JSON.stringify(totalRows));
+  }, [totalRows]);
 
   const handleFileSelected = (file, parsedData) => {
     setCsvFile(file);
