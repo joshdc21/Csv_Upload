@@ -36,7 +36,14 @@ const FileDrop = ({ onFileSelected }) => {
         Drag and drop your CSV file here, or click to browse
       </p>
 
-      <Button onClick={handleClick} icon="download" className="drop-button">
+      <Button
+        onClick={(e) => {
+          e.stopPropagation(); 
+          handleClick();
+        }}
+        icon="download"
+        className="drop-button"
+      >
         Browse Files
       </Button>
 

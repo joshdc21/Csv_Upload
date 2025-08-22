@@ -7,6 +7,8 @@ import './Home.css';
 const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
   const [csvFile, setCsvFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [totalRows, setTotalRows] = useState(0);
+
 
   const [preview, setPreview] = useState(() => {
     const storedPreview = localStorage.getItem('preview');
@@ -43,6 +45,8 @@ const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
     onUpload(file);
     setPreview(parsedData.slice(0, 100));
     setIsFileUploaded(true); 
+
+    setTotalRows(parsedData.length);
   };
 
   const handleReset = () => {
@@ -156,29 +160,51 @@ const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
         )}
 
         {preview?.length > 0 && (
-          <div className="table-wrapper">
-            <h3>Preview</h3>
-            <table>
-              <thead>
-                <tr>
-                  {Object.keys(preview[0]).map((header, idx) => (
-                    <th key={idx}>{header}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {preview.map((row, i) => (
-                  <tr key={i}>
-                    {Object.values(row).map((val, j) => (
-                      <td key={j}>{val}</td>
+          <div className="card">
+            <div className="card-header">
+              <h3>Preview</h3>
+            </div>
+            <div className="card-body table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    {Object.keys(preview[0]).map((header, idx) => (
+                      <th key={idx}>{header}</th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {preview.map((row, i) => (
+                    <tr key={i}>
+                      {Object.values(row).map((val, j) => (
+                        <td key={j}>{val}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </main>
+
+      <aside className="summary-pane">
+        {csvFile && (
+          <div className="card">
+            <div className="card-header">
+              <h3>File Summary</h3>
+            </div>
+            <div className="card-body">
+              <p><strong>Name:</strong> {csvFile.name}</p>
+              <p><strong>Size:</strong> {Math.round(csvFile.size / 1024).toLocaleString()} KB</p>
+              <p><strong>Total Rows:</strong> {totalRows}</p>
+              <p><strong>Total Rows (previewed):</strong> {preview.length}</p>
+              <p><strong>Columns:</strong> {preview.length > 0 ? Object.keys(preview[0]).length : 0}</p>
+            </div>
+          </div>
+        )}
+      </aside>
+
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .app {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 200px 2fr 1fr;
   height: 100vh;
 }
 
@@ -96,7 +96,95 @@
   display: none;
 }
 
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  background: #f9f9f9;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 16px 20px;
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+}
+
+.table-wrapper th {
+  background: #fafafa;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+.table-wrapper td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.table-wrapper tr:hover {
+  background: #f6f6f6;
+}
+
+.summary-pane {
+  grid-column: 3;
+  padding: 20px;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+
+}
+
 @media (max-width: 767px) {
+  .app {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: auto auto;   
+  }
+
+  .sidebar-pane {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 100%;
+  }
+
+  .summary-pane {
+    grid-column: 2;
+    grid-row: 1;
+    border-left: none;
+    border-bottom: 1px solid #ddd;
+    margin-left: -150px;
+  }
+
+  .content-pane {
+    grid-column: 2;
+    grid-row: 2; 
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+    background: #fff;
+    margin-left: -150px;
+  }
+
   .mobile-overlay {
     display: block;
     position: fixed;
@@ -126,17 +214,7 @@
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    z-index: 1101; 
+    z-index: 1101;
     cursor: pointer;
-  }
-
-  .content-pane {
-  grid-column: 2;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;    
-  position: relative;  
-  background: #fff;
-  margin-left: -120px;
   }
 }
