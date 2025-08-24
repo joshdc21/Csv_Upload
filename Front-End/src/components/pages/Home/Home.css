@@ -120,7 +120,6 @@
 
 .card-body {
   padding: 16px 20px;
-  overflow-x: auto;
 }
 
 .table-wrapper table {
@@ -151,6 +150,54 @@
   border-left: 1px solid #ddd;
   overflow-y: auto;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  padding-top: 200px;
+}
+
+.summary-row {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.summary-pane .card {
+  margin: 0; 
+}
+
+.summary-row .card {
+  flex: 1;
+}
+
+.summary-actions {
+  position: static; 
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.small-btn {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.summary-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  width: 200px;
 }
 
 @media (max-width: 767px) {
@@ -172,6 +219,16 @@
     border-left: none;
     border-bottom: 1px solid #ddd;
     margin-left: -150px;
+    padding-top: 0;
+  }
+
+  .summary-actions {
+    justify-content: center; 
+    margin-top: 12px;
+  }
+
+  .summary-row {
+    padding-top: 0;
   }
 
   .content-pane {
