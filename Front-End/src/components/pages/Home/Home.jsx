@@ -215,21 +215,24 @@ const Home = ({ isFileUploaded: initialFileUploaded, onUpload, onReset }) => {
 
       <aside className="summary-pane">
         {csvFile && (
-          <div className="card">
-            <div className="card-header">
-              <h3>File Summary</h3>
+          <>
+            <div className="summary-row">
+              <div className="summary-card"><div className="card-header"><h3>File Name</h3></div><div className="card-body"><p>{csvFile.name}</p></div></div>
+              <div className="summary-card"><div className="card-header"><h3>File Size</h3></div><div className="card-body"><p>{Math.round(csvFile.size / 1024).toLocaleString()} KB</p></div></div>
+              <div className="summary-card"><div className="card-header"><h3>Total Rows</h3></div><div className="card-body"><p>{totalRows}</p></div></div>
             </div>
-            <div className="card-body">
-              <p><strong>Name:</strong> {csvFile.name}</p>
-              <p><strong>Size:</strong> {Math.round(csvFile.size / 1024).toLocaleString()} KB</p>
-              <p><strong>Total Rows:</strong> {totalRows}</p>
-              <p><strong>Total Rows (previewed):</strong> {preview.length}</p>
-              <p><strong>Columns:</strong> {preview.length > 0 ? Object.keys(preview[0]).length : 0}</p>
-              <button className="process-btn" onClick={handleReset}>
-              Change File
-            </button>
+
+            <div className="summary-row">
+              <div className="summary-card"><div className="card-header"><h3>Rows Previewed</h3></div><div className="card-body"><p>{preview.length}</p></div></div>
+              <div className="summary-card"><div className="card-header"><h3>Columns</h3></div><div className="card-body"><p>{preview.length > 0 ? Object.keys(preview[0]).length : 0}</p></div></div>
             </div>
-          </div>
+
+            <div className="summary-actions">
+              <button className="process-btn small-btn" onClick={handleReset}>
+                Change File
+              </button>
+            </div>
+          </>
         )}
       </aside>
 
