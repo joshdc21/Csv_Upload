@@ -109,17 +109,18 @@
 .card-header {
   padding: 16px 20px;
   border-bottom: 1px solid #eee;
-  background: #f9f9f9;
 }
 
 .card-header h3 {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .card-body {
   padding: 16px 20px;
+  text-align: center;
 }
 
 .table-wrapper table {
@@ -224,7 +225,8 @@
 
   .summary-actions {
     justify-content: center; 
-    margin-top: 12px;
+    padding-top: 12px;
+    order: -1
   }
 
   .summary-row {
